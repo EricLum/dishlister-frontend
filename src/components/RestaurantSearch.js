@@ -1,9 +1,14 @@
 import React from 'react'
 
-export default const RestaurantSearch= () => {
+const RestaurantSearch= () => {
 
   return (
-    <div></div>
+    <div>
+
+      IM IN THE RESTAURANT SEARCH
+    </div>
   )
 
 }
+
+export default RestaurantSearch

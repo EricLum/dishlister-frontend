@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default const RestaurantCard= () => {
+const RestaurantCard= () => {
 
   return (
     <div></div>
   )
 
 }
+
+export default RestaurantCard

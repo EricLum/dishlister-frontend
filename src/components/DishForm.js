@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default const DishForm = () => {
+const DishForm = () => {
 
   return (
     <div></div>
   )
 
 }
+
+export default DishForm
