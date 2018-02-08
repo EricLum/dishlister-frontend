@@ -1,6 +1,6 @@
 import React from "react";
 
-class AuthContainer extends React.Component { 
+class AuthContainer extends React.Component {
   constructor(props) {
     super(props);
   }

@@ -1,6 +1,6 @@
 import React from "react";
 
-class DishlisterContainer extends React.Component { 
+class DishlisterContainer extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -11,4 +11,5 @@ class DishlisterContainer extends React.Component {
     )
   }
  }
+ 
 export default DishlisterContainer
