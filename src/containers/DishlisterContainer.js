@@ -3,6 +3,7 @@ import RestaurantList from './RestaurantList'
 import RestaurantSearch from '../components/RestaurantSearch'
 import PlacesAdapter from '../adapters/PlacesAdapter'
 import StaticMapsAdapter from '../adapters/StaticMapsAdapter'
+import MapContainer from './MapContainer'
 
 
 class DishlisterContainer extends React.Component {
@@ -10,7 +11,8 @@ class DishlisterContainer extends React.Component {
     super(props);
 
     this.state = {
-      startingAddress: {},
+      startingAddress: [],
+      searchResponse: [],
       clickedRestaurants: []
     }
 
@@ -43,20 +45,33 @@ class DishlisterContainer extends React.Component {
   }
 
 
-  componentDidMount = () => {
-    this.fetchStaticGoogleMaps("1556 York Avenue, New York, NY 10028").then(res => {
-       this.searchAddressForPlaces(res.results[0].geometry.location.lat, res.results[0].geometry.location.lng).then(console.log)
-      // this.setState({
-      //   startingAddress: res.results[0].geometry.location
-      // }, () => {console.log(this.state)})
+
+  handleLocationSubmit = (e) => {
+    e.preventDefault();
+    let address = e.target.firstElementChild.value;
+
+    this.fetchStaticGoogleMaps(address).then(res => {
+      this.setState({
+        startingAddress: {lat: res.results[0].geometry.location.lat, lng: res.results[0].geometry.location.lng}
+      })
+       this.searchAddressForPlaces(res.results[0].geometry.location.lat, res.results[0].geometry.location.lng)
+       .then(res => this.setState({
+         searchResponse: res
+       }))
     })
+  }
+
+  componentDidMount = () => {
+
   }
 
   render() {
     return (
       <div>
         "HEY IM THE DISLISTER CONTAINER"
-        <RestaurantSearch />
+        <RestaurantSearch onLocationSubmit={this.handleLocationSubmit}/>
+        <MapContainer startingAddress={this.state.startingAddress} searchResults={this.state.searchResponse} />
+
         <RestaurantList />
 
       </div>

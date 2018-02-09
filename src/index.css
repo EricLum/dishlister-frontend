@@ -3,3 +3,30 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: 200px;
+  grid-template-areas:
+    ". a a ."
+    ". a a .";
+}
+
+.google-map {
+  grid-area: a;
+  align-self: center;
+  justify-self: center;
+  width: 500px;
+  height: 500px;
+  border-color: black;
+  border-width: 1px;
+}
+
+.restaurant-icon {
+  width: 30px;
+  height: 30px
+}

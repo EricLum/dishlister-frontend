@@ -1,11 +1,16 @@
 import React from 'react'
 
-const RestaurantSearch= () => {
+const RestaurantSearch= (props) => {
 
   return (
     <div>
+      <form onSubmit={props.onLocationSubmit}>
+        <input id="input-location" type="text" placeholder="Enter Location" />
+        <input type="submit" value="Search for Nearby Places" />
+      </form>
 
-      IM IN THE RESTAURANT SEARCH
+      <p>MAP????</p>
+
     </div>
   )
 
