@@ -26,28 +26,31 @@ class DishlisterContainer extends React.Component {
 
 
 
-  fetchPlaces = () => {
-    const apiKey = process.env.REACT_APP_PLACES_API_KEY
-    const URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${40.7733832},${-73.94863389999999}&radius=500&type=restaurant&key=${apiKey}`
-    return fetch(URL).then(res => res.json()).then(console.log)
-
+  searchAddressForPlaces = (latitude, longitude) => {
+    return fetch('http://localhost:3001/api/v1/fetchrestaurants', {
+      method: 'post',
+      headers:  {
+        'Content-Type': 'application/json',
+        'Accepts': 'application/json'
+      },
+      body: JSON.stringify({
+        restaurant: {
+          latitude, longitude
+        }
+      }
+      )
+    }).then(res => res.json())
   }
 
 
   componentDidMount = () => {
     this.fetchStaticGoogleMaps("1556 York Avenue, New York, NY 10028").then(res => {
-      console.log(res)
-      this.setState({
-        startingAddress: res.results[0].geometry.location
-      }, () => {console.log(this.state)})
-    }).then(this.fetchPlaces())
+       this.searchAddressForPlaces(res.results[0].geometry.location.lat, res.results[0].geometry.location.lng).then(console.log)
+      // this.setState({
+      //   startingAddress: res.results[0].geometry.location
+      // }, () => {console.log(this.state)})
+    })
   }
-
-
-
-
-
-
 
   render() {
     return (
