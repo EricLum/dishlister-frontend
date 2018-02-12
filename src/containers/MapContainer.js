@@ -8,30 +8,39 @@ class MapContainer extends React.Component {
 
   }
 
-  handleRestaurantClick = (event) => {
-    this.props.onClick(event.target.value)
+  handleRestaurantClick = (value) => {
+    this.props.onMarkerClick(value)
   }
 
   getRestaurantMarkers = () => {
-    console.log(this.props)
-    return  this.props.searchResults.map(rest => <RestaurantMarker lat={rest.geometry.location.lat} lng={rest.geometry.location.lng} onClick={this.handleRestaurantClick}/>)
+    return  this.props.searchResults.map(rest => <RestaurantMarker lat={rest.geometry.location.lat} lng={rest.geometry.location.lng} onChildClick={this.handleRestaurantClick} searchid={rest.id} key={this.props.searchResults.indexOf(rest)}/>)
+  }
+
+  showMap = () => {
+    let restaurants = this.getRestaurantMarkers();
+
+    if (this.props.startingAddress == {}){
+      return <GoogleMapReact
+        center={{lat: 40.7128, lng: -74.0060}}
+        defaultZoom={14}>
+      </GoogleMapReact>
+    } else {
+      return   <GoogleMapReact
+        center={{lat: this.props.startingAddress.lat, lng: this.props.startingAddress.lng}}
+        defaultZoom={14}>
+        {restaurants}
+      </GoogleMapReact>
+    }
+
   }
 
   render() {
+    let map = this.showMap()
     console.log(this.props)
-    let restaurants = this.getRestaurantMarkers();
     return (
       <div className="wrapper">
         <div className="google-map" position="relative">
-
-          <GoogleMapReact
-            center={{lat: this.props.startingAddress.lat, lng: this.props.startingAddress.lng}}
-            defaultZoom={14}>
-
-            {restaurants}
-
-
-          </GoogleMapReact>
+          {map}
          </div>
        </div>
 
