@@ -64,7 +64,16 @@ class DishlisterContainer extends React.Component {
     let clickedRest = this.state.searchResponse.filter(rest => rest.id === value)[0]
     this.setState((prevState) => {
       return {clickedRestaurants: [...prevState.clickedRestaurants, clickedRest]}
-    }, () => console.log(this.state) );
+    });
+  }
+
+  handleRemoveFromRestList = (value) => {
+    let restToRemove = this.state.clickedRestaurants.filter(rest => rest.id === value.id)[0]
+    let indexToRemove = this.state.clickedRestaurants.indexOf(restToRemove)
+    let removed = this.state.clickedRestaurants.splice(index,1)
+    this.setState({
+      clickedRestaurants: this.state.clickedRestaurants
+    }, console.log("new Stat", this.state.clickedRestaurants))
   }
 
 
@@ -75,7 +84,7 @@ class DishlisterContainer extends React.Component {
         <RestaurantSearch onLocationSubmit={this.handleLocationSubmit}/>
         <MapContainer startingAddress={this.state.startingAddress} searchResults={this.state.searchResponse} onMarkerClick={this.handleRestaurantClick} />
 
-        <RestaurantList clickedRestaurants={this.state.clickedRestaurants} handleAddRestToFavorites = {this.props.handleAddRestToFavorites}/>
+        <RestaurantList clickedRestaurants={this.state.clickedRestaurants} handleAddRestToFavorites = {this.props.handleAddRestToFavorites} handleRemoveFromRestList={this.handleRemoveFromRestList} />
 
       </div>
     )
