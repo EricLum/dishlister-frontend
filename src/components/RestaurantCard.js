@@ -3,11 +3,29 @@ import React from 'react'
 const RestaurantCard = (props) => {
 
   let handleClick = (event) => {
-    props.handleAddRestToFavorites(props.details)
+    if(props.whichContainer === "restaurant_list"){
+      props.handleAddRestToFavorites(props.details)
+    } else {
+
+    }
+
   }
 
   let handleRemove = (event) => {
-    props.handleRemoveFromRestList(props.details)
+    if(props.whichContainer === "restaurant_list"){
+      props.handleRemoveFromRestList(props.details)
+    } else {
+      console.log(props)
+      debugger
+      props.handleRemoveFromMyRestList(props.details)
+    }
+  }
+
+
+  let renderCorrectInformation = () => {
+    if (props.whichContainer === "restaurant_list"){
+
+    }
   }
 
   return (
@@ -25,8 +43,6 @@ const RestaurantCard = (props) => {
         <span className="card-title grey-text text-darken-4">{props.details.name}<i className="material-icons right">close</i></span>
         <p>Price Level: {props.details.price_level}</p>
         <p>Rating: {props.details.rating}</p>
-
-
       </div>
   </div>
   )
