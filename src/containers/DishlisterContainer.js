@@ -67,7 +67,7 @@ class DishlisterContainer extends React.Component {
     });
 
 
-    // BackendAdapter.createNewRestaurant({name: clickedRest.name, location: clickedRest.vicinity, price_range: clickedRest.price_level, rating: clickedRest.rating, latitude: clickedRest.geometry.location.lat, longitude: clickedRest.geometry.location.lng})
+    BackendAdapter.createNewRestaurant({name: clickedRest.name, location: clickedRest.vicinity, price_range: clickedRest.price_level, rating: clickedRest.rating, latitude: clickedRest.geometry.location.lat, longitude: clickedRest.geometry.location.lng})
   }
 
   handleRemoveFromRestList = (value) => {
@@ -78,7 +78,6 @@ class DishlisterContainer extends React.Component {
       clickedRestaurants: this.state.clickedRestaurants
     })
   }
-
 
   render() {
     return (

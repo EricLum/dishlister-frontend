@@ -1,12 +1,29 @@
 const BackendAdapter = (function(){
 
-  const base_url = "http://localhost3001/api/v1/"
+  const base_url = "http://localhost:3001/api/v1/"
 
   return class BackendAdapter {
 
     static createNewSavedRestaurant(user, restaurant, tried, rating) {
       return fetch(`${base_url}saved_restaurants`, {
         method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({saved_restaurant:{
+          user_id: `${user}`,
+          restaurant_id: `${restaurant}`,
+          tried: `${tried}`,
+          rating: `${rating}`
+        }})
+      }).then(res => res.json())
+        .then(console.log)
+    }
+
+    static updateSavedRestaurant(user,restaurant, tried,rating){
+      return fetch(`${base_url}saved_restaurants`, {
+        method: "PATCH",
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -22,7 +39,6 @@ const BackendAdapter = (function(){
       })
     }
 
-
     static createNewRestaurant(restaurant){
       return fetch(`${base_url}restaurants`, {
         method: "POST",
@@ -37,7 +53,7 @@ const BackendAdapter = (function(){
           latitude: `${restaurant.latitude}`,
           longitude: `${restaurant.longitude}`
         })
-      })
+      }).then(res => res.json())
     }
 
     static createNewDish ({dish}){

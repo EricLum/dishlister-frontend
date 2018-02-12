@@ -4,13 +4,13 @@ import NavBar from './components/NavBar'
 import DishlisterContainer from './containers/DishlisterContainer'
 // import { Route, Switch, Redirect } from 'react-router-dom'
 import MyDishlisterContainer from './containers/MyDishlisterContainer'
-import BackendAdapter from '../adapters/BackendAdapter'
+import BackendAdapter from './adapters/BackendAdapter'
 
 class App extends Component {
 
   state =  {
     favoriteRestaurants: [],
-    currentUser: ''
+    currentUser: {}
   }
 
   handleSignUp = (e) => {
@@ -23,12 +23,13 @@ class App extends Component {
       },
       body: JSON.stringify({
         user: {
-          username:e.target.firstChild.value
+          username: e.target.firstChild.value,
+          password: e.target.children[1].value
         }
       })
     }).then(res => res.json())
     .then(json => this.setState({
-      currentUser: json.username
+      currentUser: json
     }))
   }
 
@@ -38,7 +39,7 @@ class App extends Component {
     } )
 
     // need to add a fetch to POST to the backend = creates a new saved_restaurant
-  // BackendAdapter.createNewSavedRestaurant(current_user.id, restaurant.id, restaurant.tried, restaurant.rating)
+  BackendAdapter.createNewSavedRestaurant(this.state.currentUser.id, restaurant.id, false , 0)
   }
 
 
