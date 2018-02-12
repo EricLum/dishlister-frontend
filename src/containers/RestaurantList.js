@@ -7,13 +7,8 @@ class RestaurantList extends React.Component {
     console.log(this.props)
   }
 
-  handleAddRestToFavorites = () => {
-
-  }
-
-
   renderRestaurantCards = () => {
-    return this.props.clickedRestaurants.map(rest => <RestaurantCard details={rest} onClick={this.handleAddRestToFavorites}/>)
+    return this.props.clickedRestaurants.map(rest => <RestaurantCard details={rest} handleAddRestToFavorites={this.props.handleAddRestToFavorites} handleRemoveFromRestList = {this.props.handleRemoveFromRestList}/>)
   }
 
   render() {

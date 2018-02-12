@@ -25,8 +25,6 @@ class DishlisterContainer extends React.Component {
     return fetch(URL).then(res => res.json())
   }
 
-
-
   searchAddressForPlaces = (latitude, longitude) => {
     return fetch('http://localhost:3001/api/v1/fetchrestaurants', {
       method: 'post',
@@ -77,7 +75,7 @@ class DishlisterContainer extends React.Component {
         <RestaurantSearch onLocationSubmit={this.handleLocationSubmit}/>
         <MapContainer startingAddress={this.state.startingAddress} searchResults={this.state.searchResponse} onMarkerClick={this.handleRestaurantClick} />
 
-        <RestaurantList clickedRestaurants={this.state.clickedRestaurants}/>
+        <RestaurantList clickedRestaurants={this.state.clickedRestaurants} handleAddRestToFavorites = {this.props.handleAddRestToFavorites}/>
 
       </div>
     )

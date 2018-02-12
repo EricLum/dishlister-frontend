@@ -1,7 +1,10 @@
 import React from 'react'
 
 const RestaurantCard = (props) => {
-  console.log(props)
+
+  let handleClick = (event) => {
+    props.handleAddRestToFavorites(props.details)
+  }
 
   return (
     <div className="card">
@@ -11,8 +14,8 @@ const RestaurantCard = (props) => {
       <div className="card-content">
         <span className="card-title activator grey-text text-darken-4">{props.details.name}<i className="material-icons right">more_vert</i>
         </span>
-        <i class="small material-icons">add_circle</i>
-        <i class="small material-icons">remove_circle</i>
+        <i className="small material-icons" onClick={handleClick}>add_circle</i>
+        <i className="small material-icons" onClick={props.handleRemoveFromRestList}>remove_circle</i>
       </div>
       <div className="card-reveal">
         <span className="card-title grey-text text-darken-4">{props.details.name}<i className="material-icons right">close</i></span>
