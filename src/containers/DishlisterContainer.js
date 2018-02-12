@@ -15,7 +15,6 @@ class DishlisterContainer extends React.Component {
       searchResponse: [],
       clickedRestaurants: []
     }
-
   }
 
   fetchStaticGoogleMaps = (address) => {
@@ -61,21 +60,15 @@ class DishlisterContainer extends React.Component {
     })
   }
 
-  componentDidMount = () => {
-
-  }
 
   handleRestaurantClick = (value) => {
     console.log(value)
     let clickedRest = this.state.searchResponse.filter(rest => rest.id === value)[0]
-    // let prevState = this.state.clickedRestaurants
-    // this.setState(previousState => {{
-    //   clickedRestaurants: [...previousState, clickedRest]
-    // }}, console.log("new state", this.state))
     this.setState((prevState) => {
-      return {clickedRestaurants: [...prevState, clickedRest]}
+      return {clickedRestaurants: [...prevState.clickedRestaurants, clickedRest]}
     }, () => console.log(this.state) );
   }
+
 
   render() {
     return (
@@ -84,7 +77,7 @@ class DishlisterContainer extends React.Component {
         <RestaurantSearch onLocationSubmit={this.handleLocationSubmit}/>
         <MapContainer startingAddress={this.state.startingAddress} searchResults={this.state.searchResponse} onMarkerClick={this.handleRestaurantClick} />
 
-        <RestaurantList />
+        <RestaurantList clickedRestaurants={this.state.clickedRestaurants}/>
 
       </div>
     )
