@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 import DishlisterContainer from './containers/DishlisterContainer'
 // import { Route, Switch, Redirect } from 'react-router-dom'
 import MyDishlisterContainer from './containers/MyDishlisterContainer'
+import BackendAdapter from '../adapters/BackendAdapter'
 
 class App extends Component {
 
@@ -34,9 +35,10 @@ class App extends Component {
   handleAddRestToFavorites = (restaurant) => {
     this.setState( (prevState) => {
       return {favoriteRestaurants: [...prevState.favoriteRestaurants, restaurant]}
-    }, () => console.log(this.state.favoriteRestaurants) )
+    } )
 
-        // need to add a fetch to POST to the frontend
+    // need to add a fetch to POST to the backend = creates a new saved_restaurant
+  // BackendAdapter.createNewSavedRestaurant(current_user.id, restaurant.id, restaurant.tried, restaurant.rating)
   }
 
 
@@ -46,9 +48,8 @@ class App extends Component {
     let removed = this.state.favoriteRestaurants.splice(indexToRemove, 1)
     this.setState({
       favoriteRestaurants: this.state.favoriteRestaurants
-    }, console.log("new state of fav rest", this.state))
-
-    // need to add a fetch to update the backend
+    })
+    // need to add a fetch to update the backend to delete a saved_restaurant (and associated dish)
   }
 
   render() {

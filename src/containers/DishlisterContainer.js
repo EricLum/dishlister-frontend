@@ -4,6 +4,7 @@ import RestaurantSearch from '../components/RestaurantSearch'
 import PlacesAdapter from '../adapters/PlacesAdapter'
 import StaticMapsAdapter from '../adapters/StaticMapsAdapter'
 import MapContainer from './MapContainer'
+import BackendAdapter from "../adapters/BackendAdapter"
 
 
 class DishlisterContainer extends React.Component {
@@ -54,17 +55,19 @@ class DishlisterContainer extends React.Component {
        this.searchAddressForPlaces(res.results[0].geometry.location.lat, res.results[0].geometry.location.lng)
        .then(res => this.setState({
          searchResponse: res
-       }, console.log("state is", this.state)))
+       }))
     })
   }
 
 
-  handleRestaurantClick = (value) => {
-    console.log(value)
-    let clickedRest = this.state.searchResponse.filter(rest => rest.id === value)[0]
+  handleRestaurantClick = (restaurant) => {
+    let clickedRest = this.state.searchResponse.filter(rest => rest.id === restaurant)[0]
     this.setState((prevState) => {
       return {clickedRestaurants: [...prevState.clickedRestaurants, clickedRest]}
     });
+
+
+    // BackendAdapter.createNewRestaurant({name: clickedRest.name, location: clickedRest.vicinity, price_range: clickedRest.price_level, rating: clickedRest.rating, latitude: clickedRest.geometry.location.lat, longitude: clickedRest.geometry.location.lng})
   }
 
   handleRemoveFromRestList = (value) => {
@@ -73,7 +76,7 @@ class DishlisterContainer extends React.Component {
     let removed = this.state.clickedRestaurants.splice(indexToRemove,1)
     this.setState({
       clickedRestaurants: this.state.clickedRestaurants
-    }, console.log("new Stat", this.state.clickedRestaurants))
+    })
   }
 
 

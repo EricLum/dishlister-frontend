@@ -36,7 +36,6 @@ class MapContainer extends React.Component {
 
   render() {
     let map = this.showMap()
-    console.log(this.props)
     return (
       <div className="wrapper">
         <div className="google-map" position="relative">

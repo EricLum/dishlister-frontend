@@ -1,6 +1,7 @@
 import React from "react";
 import RestaurantCard from "../components/RestaurantCard"
 
+
 class RestaurantList extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +13,6 @@ class RestaurantList extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     let clickedRestaurants = this.renderRestaurantCards();
 
     return (

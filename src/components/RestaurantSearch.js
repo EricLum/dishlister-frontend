@@ -8,9 +8,6 @@ const RestaurantSearch= (props) => {
         <input id="input-location" type="text" placeholder="Enter Location" />
         <input className="btn blue darken-3 waves-effect" type="submit" value="Search for Nearby Places" />
       </form>
-
-      <p>MAP????</p>
-
     </div>
   )
 

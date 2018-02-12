@@ -15,8 +15,6 @@ const RestaurantCard = (props) => {
     if(props.whichContainer === "restaurant_list"){
       props.handleRemoveFromRestList(props.details)
     } else {
-      console.log(props)
-      debugger
       props.handleRemoveFromMyRestList(props.details)
     }
   }

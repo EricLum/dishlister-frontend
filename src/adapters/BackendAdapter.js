@@ -1,8 +1,8 @@
-const BackendAdapter (function(){
+const BackendAdapter = (function(){
 
-  const base_url = "http://localhost3000/api/v1/"
+  const base_url = "http://localhost3001/api/v1/"
 
-  class BackendAdapter {
+  return class BackendAdapter {
 
     static createNewSavedRestaurant(user, restaurant, tried, rating) {
       return fetch(`${base_url}saved_restaurants`, {
@@ -23,7 +23,7 @@ const BackendAdapter (function(){
     }
 
 
-    static createNewRestaurant({restaurant}){
+    static createNewRestaurant(restaurant){
       return fetch(`${base_url}restaurants`, {
         method: "POST",
         headers: {
@@ -48,24 +48,16 @@ const BackendAdapter (function(){
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          saved_restaurant_id: `${dish.saved_restaurant_id}`
-          name: `${dish.name}`
-          price: `${dish.price}`
+          saved_restaurant_id: `${dish.saved_restaurant_id}`,
+          name: `${dish.name}`,
+          price: `${dish.price}`,
           description: `${dish.description}`
         })
       })
     }
-
-
-
-
-
-
-
-
-
-
   }
 
-
 })()
+
+console.log(BackendAdapter)
+export default BackendAdapter
