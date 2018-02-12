@@ -70,7 +70,7 @@ class DishlisterContainer extends React.Component {
   handleRemoveFromRestList = (value) => {
     let restToRemove = this.state.clickedRestaurants.filter(rest => rest.id === value.id)[0]
     let indexToRemove = this.state.clickedRestaurants.indexOf(restToRemove)
-    let removed = this.state.clickedRestaurants.splice(index,1)
+    let removed = this.state.clickedRestaurants.splice(indexToRemove,1)
     this.setState({
       clickedRestaurants: this.state.clickedRestaurants
     }, console.log("new Stat", this.state.clickedRestaurants))
