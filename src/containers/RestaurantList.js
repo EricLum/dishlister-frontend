@@ -1,4 +1,5 @@
 import React from "react";
+import RestaurantCard from "../components/RestaurantCard"
 
 class RestaurantList extends React.Component {
   constructor(props) {
@@ -7,8 +8,9 @@ class RestaurantList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="">
         HEY IM IN TH RESTAURANT LIST
+        <RestaurantCard />
       </div>
 
     )

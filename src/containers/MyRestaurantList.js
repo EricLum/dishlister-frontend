@@ -7,7 +7,7 @@ class MyRestaurantList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div >
         IM IN THE RESTAURANT LIST
 
       </div>

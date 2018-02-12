@@ -6,7 +6,7 @@ const RestaurantSearch= (props) => {
     <div>
       <form onSubmit={props.onLocationSubmit}>
         <input id="input-location" type="text" placeholder="Enter Location" />
-        <input type="submit" value="Search for Nearby Places" />
+        <input className="btn blue darken-3 waves-effect" type="submit" value="Search for Nearby Places" />
       </form>
 
       <p>MAP????</p>
