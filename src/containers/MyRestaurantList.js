@@ -8,8 +8,11 @@ class MyRestaurantList extends React.Component {
     //expecting this.props.favoriteRestaurants
   }
 
+
+
   renderRestaurantCards = () => {
-    return this.props.favoriteRestaurants.map(rest => <RestaurantCard details={rest}  handleRemoveFromMyRestList = {this.handleRemoveFromMyRestList}/>)
+    // pass in different props for saved restaurants
+    return this.props.favoriteRestaurants.map(rest => <RestaurantCard details={rest} whichContainer={"my_restaurant_list"} handleRemoveFromMyRestList = {this.props.handleRemoveFromMyRestList}/>)
   }
 
   render() {
