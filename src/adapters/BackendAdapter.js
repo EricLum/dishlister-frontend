@@ -17,12 +17,12 @@ const BackendAdapter = (function(){
           tried: `${tried}`,
           rating: `${rating}`
         }})
-      }).then(res => res.json())
+      }).then(res => console.log(res))
         .then(console.log)
     }
 
-    static updateSavedRestaurant(user,restaurant, tried,rating){
-      return fetch(`${base_url}saved_restaurants`, {
+    static updateSavedRestaurant(saved_restaurant_id, user,restaurant, tried,rating){
+      return fetch(`${base_url}saved_restaurants/${saved_restaurant_id}`, {
         method: "PATCH",
         headers: {
           'Content-Type': 'application/json',
@@ -34,9 +34,16 @@ const BackendAdapter = (function(){
           tried: `${tried}`,
           rating: `${rating}`
         })
+      })
         .then(res => res.json())
         .then(console.log)
-      })
+      }
+
+
+    static deleteSavedRestaurant(saved_restaurant_id){
+      return fetch(`${base_url}saved_restaurants/${saved_restaurant_id}`, {
+        method: "DELETE"})
+        .then(res => res.json())
     }
 
     static createNewRestaurant(restaurant){
@@ -48,6 +55,7 @@ const BackendAdapter = (function(){
         },
         body: JSON.stringify({
           name: `${restaurant.name}`,
+          api_id: `${restaurant.id}`,
           location: `${restaurant.location}`,
           price_range: `${restaurant.price_range}`,
           latitude: `${restaurant.latitude}`,
@@ -71,6 +79,11 @@ const BackendAdapter = (function(){
         })
       })
     }
+
+
+
+
+
   }
 
 })()

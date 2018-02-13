@@ -13,7 +13,6 @@ const NavBar = (props) => {
       <nav>
         <div className="nav-wrapper blue darken-3 z-depth-5">
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li>HEY </li>
               <li>Link 1</li>
               <li>Link 2 </li>
               <li>Link 3</li>

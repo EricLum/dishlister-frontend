@@ -34,12 +34,11 @@ class App extends Component {
   }
 
   handleAddRestToFavorites = (restaurant) => {
+    BackendAdapter.createNewSavedRestaurant(this.state.currentUser.id, restaurant.id, false , 0)
+
     this.setState( (prevState) => {
       return {favoriteRestaurants: [...prevState.favoriteRestaurants, restaurant]}
     } )
-
-    // need to add a fetch to POST to the backend = creates a new saved_restaurant
-  BackendAdapter.createNewSavedRestaurant(this.state.currentUser.id, restaurant.id, false , 0)
   }
 
 

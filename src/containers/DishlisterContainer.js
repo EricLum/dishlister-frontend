@@ -62,12 +62,13 @@ class DishlisterContainer extends React.Component {
 
   handleRestaurantClick = (restaurant) => {
     let clickedRest = this.state.searchResponse.filter(rest => rest.id === restaurant)[0]
-    this.setState((prevState) => {
-      return {clickedRestaurants: [...prevState.clickedRestaurants, clickedRest]}
-    });
 
-
-    BackendAdapter.createNewRestaurant({name: clickedRest.name, location: clickedRest.vicinity, price_range: clickedRest.price_level, rating: clickedRest.rating, latitude: clickedRest.geometry.location.lat, longitude: clickedRest.geometry.location.lng})
+    BackendAdapter.createNewRestaurant({api_id: clickedRest.id, name: clickedRest.name, location: clickedRest.vicinity, price_range: clickedRest.price_level, rating: clickedRest.rating, latitude: clickedRest.geometry.location.lat, longitude: clickedRest.geometry.location.lng}).then( res => {
+      clickedRest["id"] = res.id 
+      this.setState((prevState) => {
+        return {clickedRestaurants: [...prevState.clickedRestaurants, clickedRest]}
+      });
+    })
   }
 
   handleRemoveFromRestList = (value) => {

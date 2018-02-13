@@ -5,7 +5,7 @@ import RestaurantCard from "../components/RestaurantCard"
 class RestaurantList extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props)
+    // console.log(this.props)
   }
 
   renderRestaurantCards = () => {
@@ -21,6 +21,7 @@ class RestaurantList extends React.Component {
       </div>
 
     )
+
   }
  }
 export default RestaurantList
