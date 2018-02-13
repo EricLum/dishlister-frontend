@@ -11,7 +11,7 @@ const NavBar = (props) => {
     <div>
       {displayCurrentUser}
       <nav>
-        <div className="nav-wrapper blue darken-3 z-depth-5">
+        <div className="nav-wrapper blue darken-3">
           <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>Link 1</li>
               <li>Link 2 </li>

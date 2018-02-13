@@ -31,24 +31,24 @@ const RestaurantCard = (props) => {
     } else {
       return (
         <div>
-          <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-            <div id="modal1" class="modal">
-              <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-              </div>
-              <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-              </div>
-            </div>
+          <h4>Tell us about your visit!</h4>
+            <form>
+              <label for="tried"> Did you visit this restaurant? </label>
+              <input type="checkbox" name="tried" />
+              <label for="rating">Your restaurant rating: </label>
+              <input type="number" name="rating" placeholder="Rating (1 - 5)" min="0" max="5" />
+              <label>What was your favorite dish? </label>
+              <input type="text" name="dish" placeholder="Enter dish name" />
+              <label for="description">Description of Dish: </label>
+              <input type="text_area" name="description" />
+              <label for="price">Price of Dish: $</label>
+              <input type="number" name="price" />
+              <input type="submit" name="submit" value="Submit your favorite dish!" />
+            </form>
         </div>
       )
     }
   }
-
-
-
-
 
 
 
