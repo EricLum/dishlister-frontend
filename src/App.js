@@ -6,7 +6,7 @@ import DishlisterContainer from './containers/DishlisterContainer'
 import MyDishlisterContainer from './containers/MyDishlisterContainer'
 import BackendAdapter from './adapters/BackendAdapter'
 
-class App extends Component {
+class App extends Component {2
 
   state =  {
     favoriteRestaurants: [],
