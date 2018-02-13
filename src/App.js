@@ -60,8 +60,8 @@ class App extends Component {2
           <h3>A solution to all your rec needs!</h3>
         <h4>Save all of your restaurant recommendations. </h4>
 
-        <DishlisterContainer handleAddRestToFavorites = {this.handleAddRestToFavorites}/>
-        <MyDishlisterContainer favoriteRestaurants={this.state.favoriteRestaurants} handleRemoveFromMyRestList={this.handleRemoveFromMyRestList}/>
+        <DishlisterContainer handleAddRestToFavorites = {this.handleAddRestToFavorites} currentUser = {this.state.currentUser} />
+        <MyDishlisterContainer favoriteRestaurants={this.state.favoriteRestaurants} currentUser = {this.state.currentUser}  handleRemoveFromMyRestList={this.handleRemoveFromMyRestList}/>
       </div>
     );
   }

@@ -11,7 +11,7 @@ class MyDishlisterContainer extends React.Component {
     return (
       <div>
         this is my dish lister container
-        <MyRestaurantList favoriteRestaurants = {this.props.favoriteRestaurants} handleRemoveFromMyRestList={this.props.handleRemoveFromMyRestList}/>
+        <MyRestaurantList favoriteRestaurants = {this.props.favoriteRestaurants} handleRemoveFromMyRestList={this.props.handleRemoveFromMyRestList} currentUser = {this.props.currentUser} />
       </div>
     )
   }

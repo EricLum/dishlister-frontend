@@ -1,4 +1,5 @@
 import React from 'react'
+import BackendAdapter from '../adapters/BackendAdapter'
 
 const RestaurantCard = (props) => {
 
@@ -20,6 +21,25 @@ const RestaurantCard = (props) => {
   }
 
 
+  let submitRestaurantForm = (e) => {
+    e.preventDefault()
+    e.persist()
+
+    //update restaurant with new form details
+    BackendAdapter.updateSavedRestaurant(props.currentUser.id, props.details.id, e.target.children[1].checked, e.target.children[3].value).then(res => {
+        let dish_name = e.target.children[5].value
+        let dish_price= e.target.children[9].value
+        let dish_description = e.target.children[7].value
+        let saved_restaurant_id = res.id
+        BackendAdapter.createNewDish(saved_restaurant_id, dish_name, dish_price, dish_description)
+      }
+    )
+
+    //create new dish with details given
+
+  }
+
+
   let renderDetails = () => {
     if (props.whichContainer === "restaurant_list"){
       return (
@@ -30,9 +50,10 @@ const RestaurantCard = (props) => {
       )
     } else {
       return (
+        //not in restaurant list -- it's in MY Restaurant list
         <div>
           <h4>Tell us about your visit!</h4>
-            <form>
+            <form onSubmit={submitRestaurantForm}>
               <label for="tried"> Did you visit this restaurant? </label>
               <input type="checkbox" name="tried" />
               <label for="rating">Your restaurant rating: </label>

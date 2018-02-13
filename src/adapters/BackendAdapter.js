@@ -4,6 +4,7 @@ const BackendAdapter = (function(){
 
   return class BackendAdapter {
 
+    //Saved Restaurants
     static createNewSavedRestaurant(user, restaurant, tried, rating) {
       return fetch(`${base_url}saved_restaurants`, {
         method: "POST",
@@ -21,9 +22,9 @@ const BackendAdapter = (function(){
         .then(console.log)
     }
 
-    static updateSavedRestaurant(saved_restaurant_id, user,restaurant, tried,rating){
-      return fetch(`${base_url}saved_restaurants/${saved_restaurant_id}`, {
-        method: "PATCH",
+    static updateSavedRestaurant(user,restaurant, tried,rating){
+      return fetch(`${base_url}saved_restaurants/find`, {
+        method: "POST",
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -36,9 +37,7 @@ const BackendAdapter = (function(){
         })
       })
         .then(res => res.json())
-        .then(console.log)
       }
-
 
     static deleteSavedRestaurant(saved_restaurant_id){
       return fetch(`${base_url}saved_restaurants/${saved_restaurant_id}`, {
@@ -46,6 +45,8 @@ const BackendAdapter = (function(){
         .then(res => res.json())
     }
 
+
+    //Restaurants
     static createNewRestaurant(restaurant){
       return fetch(`${base_url}restaurants`, {
         method: "POST",
@@ -64,7 +65,9 @@ const BackendAdapter = (function(){
       }).then(res => res.json())
     }
 
-    static createNewDish ({dish}){
+
+    //Dishes
+    static createNewDish (restaurant_id, dish_name, dish_price, dish_description){
       return fetch(`${base_url}dishes`, {
         method: "POST",
         headers: {
@@ -72,21 +75,15 @@ const BackendAdapter = (function(){
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          saved_restaurant_id: `${dish.saved_restaurant_id}`,
-          name: `${dish.name}`,
-          price: `${dish.price}`,
-          description: `${dish.description}`
+          saved_restaurant_id: `${restaurant_id}`,
+          name: `${dish_name}`,
+          price: `${dish_price}`,
+          description: `${dish_description}`
         })
       })
     }
 
-
-
-
-
   }
-
 })()
 
-console.log(BackendAdapter)
 export default BackendAdapter
