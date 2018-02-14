@@ -8,7 +8,7 @@ const NavBar = (props) => {
   const displayCurrentUser = <div>{props.currentUser.username} is logged in</div>
 
   return (
-    <div>
+    <div className='nav'>
       {displayCurrentUser}
       <nav>
         <div className="nav-wrapper blue darken-3">
@@ -18,13 +18,7 @@ const NavBar = (props) => {
               <li>Link 3</li>
           </ul>
         </div>
-      </nav>
-      <label> Signup </label>
-      <form onSubmit={props.handleSignUp}>
-        <input type='text' placeholder='Username'></input>
-        <input type='password' placeholder='Password'></input>
-        <input type='submit'></input>
-      </form>
+      </nav>  
     </div>
   )
 }

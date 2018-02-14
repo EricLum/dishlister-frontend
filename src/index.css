@@ -4,7 +4,28 @@ body {
   font-family: sans-serif;
 }
 
+.login{
+  grid-column-start: 1;
+  grid-row-start:1 ;
+}
 
+.nav{
+  grid-row-start: 1;
+  grid-column-start: 2;
+  grid-column-end: 6;
+}
+
+.searchForm{
+  padding-bottom: 50px;
+  border: 1px black;
+}
+
+.container {
+  display: grid;
+
+  grid-template-columns: 10% 30% 20% 20% auto;
+  grid-template-rows: repeat(5, 20%);
+}
 
 .wrapper {
   display: grid;
@@ -16,17 +37,47 @@ body {
     ". a a .";
 }
 
+.DishlisterContainer{
+  grid-row-start: 3;
+  grid-column-start:2;
+  grid-column-end: 3;
+  grid-row-end: 3;
+}
+
+.MyDishlisterContainer{
+grid-row-start: 2;
+grid-row-end: 6;
+grid-column-start: 4;
+grid-column-end: 6
+}
+
 .google-map {
+  resize: both;
   grid-area: a;
-  align-self: center;
-  justify-self: center;
-  width: 800px;
-  height: 500px;
+  width: 550px;
+  height: 300px;
   border-color: black;
   border-width: 1px;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  margin: 0 auto;
+}
+.RestaurantList{
+  grid-row-start: 5;
+  grid-column-start: 2;
+  grid-column-end: 6;
+  grid-row-end: 6;
+}
+
+.SignUp {
+  height: 100px;
 }
 
 .restaurant-icon {
   width: 30px;
   height: 30px
+}
+
+.card {
+  width: 550px
 }

@@ -20,13 +20,16 @@ const RestaurantCard = (props) => {
     }
   }
 
-
   let submitRestaurantForm = (e) => {
+    // updates a restaurant as well as create a new dish.
     e.preventDefault()
+
+    //persist event so it can be used later on.
     e.persist()
 
-    //update restaurant with new form details
     BackendAdapter.updateSavedRestaurant(props.currentUser.id, props.details.id, e.target.children[1].checked, e.target.children[3].value).then(res => {
+
+      //Create Dish with saved restaurant id return.
         let dish_name = e.target.children[5].value
         let dish_price= e.target.children[9].value
         let dish_description = e.target.children[7].value
@@ -34,11 +37,8 @@ const RestaurantCard = (props) => {
         BackendAdapter.createNewDish(saved_restaurant_id, dish_name, dish_price, dish_description)
       }
     )
-
-    //create new dish with details given
-
+   alert('Thank you for your input.')
   }
-
 
   let renderDetails = () => {
     if (props.whichContainer === "restaurant_list"){
@@ -50,7 +50,7 @@ const RestaurantCard = (props) => {
       )
     } else {
       return (
-        //not in restaurant list -- it's in MY Restaurant list
+        //This is in MyRestaurant List -- In Backend this is SavedRestaurants.
         <div>
           <h4>Tell us about your visit!</h4>
             <form onSubmit={submitRestaurantForm}>
@@ -61,7 +61,7 @@ const RestaurantCard = (props) => {
               <label>What was your favorite dish? </label>
               <input type="text" name="dish" placeholder="Enter dish name" />
               <label for="description">Description of Dish: </label>
-              <input type="text_area" name="description" />
+              <input type="text_area" name="description" /><br></br>
               <label for="price">Price of Dish: $</label>
               <input type="number" name="price" />
               <input type="submit" name="submit" value="Submit your favorite dish!" />
@@ -71,12 +71,9 @@ const RestaurantCard = (props) => {
     }
   }
 
-
-
   return (
     <div className="card">
       <div className="card-image waves-effect waves-block waves-light">
-        <img className="activator" src="images/office.jpg" />
       </div>
       <div className="card-content">
         <span className="card-title activator grey-text text-darken-4">{props.details.name}<i className="material-icons right">more_vert</i>

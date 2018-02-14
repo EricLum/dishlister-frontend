@@ -16,7 +16,7 @@ class RestaurantList extends React.Component {
     let clickedRestaurants = this.renderRestaurantCards();
 
     return (
-      <div className="">
+      <div className="RestaurantList">
         {clickedRestaurants}
       </div>
 

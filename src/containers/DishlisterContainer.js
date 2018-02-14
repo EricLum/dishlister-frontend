@@ -64,7 +64,7 @@ class DishlisterContainer extends React.Component {
     let clickedRest = this.state.searchResponse.filter(rest => rest.id === restaurant)[0]
 
     BackendAdapter.createNewRestaurant({api_id: clickedRest.id, name: clickedRest.name, location: clickedRest.vicinity, price_range: clickedRest.price_level, rating: clickedRest.rating, latitude: clickedRest.geometry.location.lat, longitude: clickedRest.geometry.location.lng}).then( res => {
-      clickedRest["id"] = res.id 
+      clickedRest["id"] = res.id
       this.setState((prevState) => {
         return {clickedRestaurants: [...prevState.clickedRestaurants, clickedRest]}
       });
@@ -82,8 +82,9 @@ class DishlisterContainer extends React.Component {
 
   render() {
     return (
-      <div>
-
+      <div className='DishlisterContainer'>
+        <h1>Dishlister</h1>
+        <h3>Restaurant recommendations based on delicious dishes.</h3>
         <RestaurantSearch onLocationSubmit={this.handleLocationSubmit}/>
         <MapContainer startingAddress={this.state.startingAddress} searchResults={this.state.searchResponse} onMarkerClick={this.handleRestaurantClick} />
 

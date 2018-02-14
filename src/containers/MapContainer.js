@@ -22,12 +22,12 @@ class MapContainer extends React.Component {
     if (this.props.startingAddress == {}){
       return <GoogleMapReact
         center={{lat: 40.7128, lng: -74.0060}}
-        defaultZoom={14}>
+        defaultZoom={15}>c
       </GoogleMapReact>
     } else {
       return   <GoogleMapReact
         center={{lat: this.props.startingAddress.lat, lng: this.props.startingAddress.lng}}
-        defaultZoom={14}>
+        defaultZoom={15}>
         {restaurants}
       </GoogleMapReact>
     }
@@ -37,8 +37,8 @@ class MapContainer extends React.Component {
   render() {
     let map = this.showMap()
     return (
-      <div className="wrapper">
-        <div className="google-map" position="relative">
+      <div className="MapContainer wrapper">
+        <div className="google-map item" position="relative">
           {map}
          </div>
        </div>

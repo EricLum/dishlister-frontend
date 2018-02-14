@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import NavBar from './components/NavBar'
 import DishlisterContainer from './containers/DishlisterContainer'
+import SignUp from './components/SignUp'
 // import { Route, Switch, Redirect } from 'react-router-dom'
 import MyDishlisterContainer from './containers/MyDishlisterContainer'
 import BackendAdapter from './adapters/BackendAdapter'
 
-class App extends Component {2
+class App extends Component {
 
   state =  {
     favoriteRestaurants: [],
@@ -55,11 +56,8 @@ class App extends Component {2
   render() {
     return (
       <div className="container">
+        <SignUp handleSignUp={this.handleSignUp} />
         <NavBar handleSignUp={this.handleSignUp} currentUser= {this.state.currentUser}/>
-        <h1>Dishlister</h1>
-          <h3>A solution to all your rec needs!</h3>
-        <h4>Save all of your restaurant recommendations. </h4>
-
         <DishlisterContainer handleAddRestToFavorites = {this.handleAddRestToFavorites} currentUser = {this.state.currentUser} />
         <MyDishlisterContainer favoriteRestaurants={this.state.favoriteRestaurants} currentUser = {this.state.currentUser}  handleRemoveFromMyRestList={this.handleRemoveFromMyRestList}/>
       </div>
