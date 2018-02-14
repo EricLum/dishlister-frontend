@@ -22,6 +22,20 @@ const BackendAdapter = (function(){
         .then(console.log)
     }
 
+    static findSavedRestaurant(user_id,restaurant_id){
+      return fetch(`${base_url}saved_restaurants/locate`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          user_id: `${user_id}`,
+          restaurant_id: `${restaurant_id}`
+        })
+      }).then(res => res.json())
+    }
+
     static updateSavedRestaurant(user,restaurant, tried,rating){
       return fetch(`${base_url}saved_restaurants/find`, {
         method: "POST",
