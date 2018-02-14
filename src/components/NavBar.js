@@ -13,12 +13,9 @@ const NavBar = (props) => {
       <nav>
         <div className="nav-wrapper blue darken-3">
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li>Link 1</li>
-              <li>Link 2 </li>
-              <li>Link 3</li>
           </ul>
         </div>
-      </nav>  
+      </nav>
     </div>
   )
 }

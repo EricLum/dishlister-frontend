@@ -5,11 +5,12 @@ class RestaurantCard extends React.Component{
 
   state = {
     showSavedRestDetails: false,
-    dish_descripton: '',
+    dish_description: '',
     dish: '',
     dish_price: 0.00,
-    rating: 0,
-    tried: false
+    rating: '',
+    tried: false,
+    redChecked: true
   }
 
   handleClick = (event) => {
@@ -34,12 +35,13 @@ class RestaurantCard extends React.Component{
     //persist event so it can be used later on.
     e.persist()
 
-    BackendAdapter.updateSavedRestaurant(this.props.currentUser.id, this.props.details.id, e.target.children[1].checked, e.target.children[3].value).then(res => {
+    BackendAdapter.updateSavedRestaurant(this.props.currentUser.id, this.props.details.id, e.target.children[0].children[0].checked, e.target.children[1].children[2].value).then(res => {
 
       //Create Dish with saved restaurant id return.
-        let dish_name = e.target.children[5].value
-        let dish_price= e.target.children[9].value
-        let dish_description = e.target.children[7].value
+      
+        let dish_name = e.target.children[2].children[2].value
+        let dish_description = e.target.children[3].children[2].value
+        let dish_price= e.target.children[4].children[1].value
         let saved_restaurant_id = res.id
         BackendAdapter.createNewDish(saved_restaurant_id, dish_name, dish_price, dish_description)
 
@@ -47,11 +49,11 @@ class RestaurantCard extends React.Component{
 
         this.setState({
           showSavedRestDetails: true,
-          dish_descripton: dish_description,
+          dish_description: dish_description,
           dish: dish_name,
           dish_price: dish_price,
-          rating: e.target.children[3].value,
-          tried: e.target.children[1].checked
+          rating: e.target.children[1].children[2].value,
+          tried: e.target.children[0].children[0].checked
         })
       }
     )
@@ -67,13 +69,17 @@ class RestaurantCard extends React.Component{
         </div>
       )
     }
-      if (this.state.showSavedRestDetails) {
-        console.log('i am showing saved rest details')
-        console.log (this.state)
-        return
-          (
-            <div>
-              <p> hello there </p>
+      if (this.state.showSavedRestDetails === true) {
+        return (
+            <div className='SavedRestaurantForm'>
+              <h4>{this.state.dish}</h4>
+                <ul>
+                  <li>Dish Price: {this.state.dish_price}</li>
+                  <li>Dish Description: {this.state.dish_description}</li>
+                  <li>Dish Tried?: {this.state.tried.toString()}</li>
+                  <li>Dish Rating: {this.state.rating}</li>
+                </ul>
+
             </div>
           )
       } else {
@@ -81,16 +87,25 @@ class RestaurantCard extends React.Component{
           <div className='SavedRestaurantForm'>
             <h4>Tell us about your visit!</h4>
               <form onSubmit={this.submitRestaurantForm}>
-                <label for="tried"> Did you visit this restaurant? </label>
-                <input type="checkbox" name="tried" />
-                <label for="rating">Your restaurant rating: </label>
-                <input type="number" name="rating" placeholder="Rating (1 - 5)" min="0" max="5" />
-                <label>What was your favorite dish? </label>
-                <input type="text" name="dish" placeholder="Enter dish name" />
-                <label for="description">Description of Dish: </label>
-                <input type="text_area" name="description" /><br></br>
+                <div className='input-field'>
+                  <input type="checkbox" id="test5" checked={this.state.redChecked}/>
+                </div>
+              <div className='input-field'>
+                <label for="rating">Your restaurant rating (1 - 5): </label><br></br>
+                <input type="number" name="rating" min="0" max="5" />
+              </div>
+              <div className='input-field'>
+                <label>What was your favorite dish? </label><br></br>
+                <input type="text" name="dish"  />
+              </div>
+              <div className='input-field'>
+                <label for="description">Description of Dish: </label><br></br>
+                <input type="text" name="description"/>
+              </div>
+              <div className='input-field'>
                 <label for="price">Price of Dish: $</label>
                 <input type="number" name="price" />
+              </div>
                 <input type="submit" name="submit" value="Submit your favorite dish!" />
               </form>
           </div>
@@ -100,7 +115,7 @@ class RestaurantCard extends React.Component{
 
   render () {
     return (
-      <div className="card">
+      <div className="card large">
         <div className="card-image waves-effect waves-block waves-light">
         </div>
         <div className="card-content">

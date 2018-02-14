@@ -84,7 +84,7 @@ class DishlisterContainer extends React.Component {
     return (
       <div className='DishlisterContainer'>
         <h1>Dishlister</h1>
-        <h3>Restaurant recommendations based on delicious dishes.</h3>
+        <h4>Restaurant recommendations based on delicious dishes.</h4>
         <RestaurantSearch onLocationSubmit={this.handleLocationSubmit}/>
         <MapContainer startingAddress={this.state.startingAddress} searchResults={this.state.searchResponse} onMarkerClick={this.handleRestaurantClick} />
 
