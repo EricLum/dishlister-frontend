@@ -2,7 +2,7 @@ import React from 'react'
 
 const SignUp = (props) => {
   return (
-    <div className= 'SignUp blue darken-3'>
+    <div className='' >
       <div>
       <form onSubmit={props.handleSignUp} className='login'>
         <input type='text' placeholder='Username'></input>

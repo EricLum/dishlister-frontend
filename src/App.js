@@ -6,6 +6,8 @@ import SignUp from './components/SignUp'
 // import { Route, Switch, Redirect } from 'react-router-dom'
 import MyDishlisterContainer from './containers/MyDishlisterContainer'
 import BackendAdapter from './adapters/BackendAdapter'
+import {BrowserRouter as Router, Link, NavLink} from 'react-router-dom'
+import {Modal, Button} from 'react-materialize'
 
 class App extends Component {
 
@@ -55,11 +57,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <SignUp handleSignUp={this.handleSignUp} />
+      <div>
         <NavBar handleSignUp={this.handleSignUp} currentUser= {this.state.currentUser}/>
-        <DishlisterContainer handleAddRestToFavorites = {this.handleAddRestToFavorites} currentUser = {this.state.currentUser} />
-        <MyDishlisterContainer favoriteRestaurants={this.state.favoriteRestaurants} currentUser = {this.state.currentUser}  handleRemoveFromMyRestList={this.handleRemoveFromMyRestList}/>
+        <div className='container'>
+          <DishlisterContainer handleAddRestToFavorites = {this.handleAddRestToFavorites} currentUser = {this.state.currentUser} />
+          <MyDishlisterContainer favoriteRestaurants={this.state.favoriteRestaurants} currentUser = {this.state.currentUser}  handleRemoveFromMyRestList={this.handleRemoveFromMyRestList}/>
+        </div>
       </div>
     );
   }

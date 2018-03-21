@@ -17,7 +17,7 @@ class MyRestaurantList extends React.Component {
 
   render() {
     return (
-      <div className='charlie' >
+      <div className='my_restaurant_list' >
         <h4> Bookmarked Restaurants </h4>
         <ul className="collapsible" data-collapsible="accordion">
           <li>{this.renderRestaurantCards()}</li>

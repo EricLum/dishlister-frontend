@@ -10,7 +10,6 @@ class MyDishlisterContainer extends React.Component {
   render() {
     return (
       <div className='MyDishlisterContainer'>
-        
         <MyRestaurantList favoriteRestaurants = {this.props.favoriteRestaurants} handleRemoveFromMyRestList={this.props.handleRemoveFromMyRestList} currentUser = {this.props.currentUser} />
       </div>
     )

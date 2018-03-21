@@ -87,9 +87,7 @@ class DishlisterContainer extends React.Component {
         <h4>Restaurant recommendations based on delicious dishes.</h4>
         <RestaurantSearch onLocationSubmit={this.handleLocationSubmit}/>
         <MapContainer startingAddress={this.state.startingAddress} searchResults={this.state.searchResponse} onMarkerClick={this.handleRestaurantClick} />
-
         <RestaurantList clickedRestaurants={this.state.clickedRestaurants} handleAddRestToFavorites = {this.props.handleAddRestToFavorites} handleRemoveFromRestList={this.handleRemoveFromRestList} />
-
       </div>
     )
   }

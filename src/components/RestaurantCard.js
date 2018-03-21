@@ -1,6 +1,6 @@
-fimport React from 'react'
+import React from 'react'
 import BackendAdapter from '../adapters/BackendAdapter'
-
+import {Card} from 'react-materialize'
 class RestaurantCard extends React.Component{
 
   state = {
@@ -79,7 +79,6 @@ class RestaurantCard extends React.Component{
                   <li>Dish Tried?: {this.state.tried.toString()}</li>
                   <li>Dish Rating: {this.state.rating}</li>
                 </ul>
-
             </div>
           )
       } else {
@@ -115,7 +114,12 @@ class RestaurantCard extends React.Component{
 
   render () {
     return (
-      <div className="card large">
+      <Card className='small' reveal= {  <div>
+        <span className="card-title grey-text text-darken-4">
+          {this.props.details.name}
+        </span>
+          {this.renderDetails()}
+      </div>} >
         <div className="card-image waves-effect waves-block waves-light">
         </div>
         <div className="card-content">
@@ -124,11 +128,7 @@ class RestaurantCard extends React.Component{
           <i className="small material-icons" onClick={this.handleClick}>add_circle</i>
           <i className="small material-icons" onClick={this.handleRemove}>remove_circle</i>
         </div>
-        <div className="card-reveal">
-          <span className="card-title grey-text text-darken-4">{this.props.details.name}<i className="material-icons right">close</i></span>
-          {this.renderDetails()}
-        </div>
-    </div>
+      </Card>
     )
   }
 }
