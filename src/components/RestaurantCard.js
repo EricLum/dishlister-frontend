@@ -36,9 +36,7 @@ class RestaurantCard extends React.Component{
     e.persist()
 
     BackendAdapter.updateSavedRestaurant(this.props.currentUser.id, this.props.details.id, e.target.children[0].children[0].checked, e.target.children[1].children[2].value).then(res => {
-
       //Create Dish with saved restaurant id return.
-
         let dish_name = e.target.children[2].children[2].value
         let dish_description = e.target.children[3].children[2].value
         let dish_price= e.target.children[4].children[1].value

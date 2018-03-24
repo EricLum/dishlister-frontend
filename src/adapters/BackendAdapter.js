@@ -62,6 +62,7 @@ const BackendAdapter = (function(){
 
     //Restaurants
     static createNewRestaurant(restaurant){
+      debugger
       return fetch(`${base_url}restaurants`, {
         method: "POST",
         headers: {
@@ -70,7 +71,7 @@ const BackendAdapter = (function(){
         },
         body: JSON.stringify({
           name: `${restaurant.name}`,
-          api_id: `${restaurant.id}`,
+          api_id: `${restaurant.api_id}`,
           location: `${restaurant.location}`,
           price_range: `${restaurant.price_range}`,
           latitude: `${restaurant.latitude}`,

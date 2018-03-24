@@ -6,7 +6,6 @@ import StaticMapsAdapter from '../adapters/StaticMapsAdapter'
 import MapContainer from './MapContainer'
 import BackendAdapter from "../adapters/BackendAdapter"
 
-
 class DishlisterContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -42,8 +41,6 @@ class DishlisterContainer extends React.Component {
     }).then(res => res.json())
   }
 
-
-
   handleLocationSubmit = (e) => {
     e.preventDefault();
     let address = e.target.firstElementChild.value;
@@ -62,7 +59,6 @@ class DishlisterContainer extends React.Component {
 
   handleRestaurantClick = (restaurant) => {
     let clickedRest = this.state.searchResponse.filter(rest => rest.id === restaurant)[0]
-
     BackendAdapter.createNewRestaurant({api_id: clickedRest.id, name: clickedRest.name, location: clickedRest.vicinity, price_range: clickedRest.price_level, rating: clickedRest.rating, latitude: clickedRest.geometry.location.lat, longitude: clickedRest.geometry.location.lng}).then( res => {
       clickedRest["id"] = res.id
       this.setState((prevState) => {

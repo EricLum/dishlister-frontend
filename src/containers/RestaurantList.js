@@ -19,9 +19,7 @@ class RestaurantList extends React.Component {
       <div className="RestaurantList">
         {clickedRestaurants}
       </div>
-
     )
-
   }
  }
 export default RestaurantList
