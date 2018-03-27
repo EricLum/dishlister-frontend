@@ -18,8 +18,7 @@ const BackendAdapter = (function(){
           tried: `${tried}`,
           rating: `${rating}`
         }})
-      }).then(res => console.log(res))
-        .then(console.log)
+      })
     }
 
     static findSavedRestaurant(user_id,restaurant_id){
@@ -62,7 +61,7 @@ const BackendAdapter = (function(){
 
     //Restaurants
     static createNewRestaurant(restaurant){
-      debugger
+
       return fetch(`${base_url}restaurants`, {
         method: "POST",
         headers: {

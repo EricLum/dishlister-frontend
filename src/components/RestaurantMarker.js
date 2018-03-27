@@ -4,7 +4,6 @@ const RestaurantMarker = (props) => {
 
 
   const handleClick = (event) => {
-    // console.log(event.target.parentNode.searchid)
     props.onChildClick(props.searchid)
   }
 

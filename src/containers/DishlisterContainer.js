@@ -58,9 +58,15 @@ class DishlisterContainer extends React.Component {
 
 
   handleRestaurantClick = (restaurant) => {
+
     let clickedRest = this.state.searchResponse.filter(rest => rest.id === restaurant)[0]
     BackendAdapter.createNewRestaurant({api_id: clickedRest.id, name: clickedRest.name, location: clickedRest.vicinity, price_range: clickedRest.price_level, rating: clickedRest.rating, latitude: clickedRest.geometry.location.lat, longitude: clickedRest.geometry.location.lng}).then( res => {
+      // This is where the response comes back from the database and fetches any saved_restaurant info from it.
+      // Add serializer to add dish information
       clickedRest["id"] = res.id
+      clickedRest['saved_restaurants'] = res.saved_restaurants
+      clickedRest['dishes'] = res.dishes
+      debugger
       this.setState((prevState) => {
         return {clickedRestaurants: [...prevState.clickedRestaurants, clickedRest]}
       });
@@ -77,6 +83,7 @@ class DishlisterContainer extends React.Component {
   }
 
   render() {
+    console.log(this.state.clickedRestaurants)
     return (
       <div className='DishlisterContainer'>
         <h1>Dishlister</h1>

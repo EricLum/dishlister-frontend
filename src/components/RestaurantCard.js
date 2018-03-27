@@ -1,6 +1,6 @@
 import React from 'react'
 import BackendAdapter from '../adapters/BackendAdapter'
-import {Card} from 'react-materialize'
+import {Card, Icon} from 'react-materialize'
 class RestaurantCard extends React.Component{
 
   state = {
@@ -60,10 +60,23 @@ class RestaurantCard extends React.Component{
 
   renderDetails = () => {
     if (this.props.whichContainer === "restaurant_list"){
+      // let reviews =  this.props.details.saved_restaurants.map((svdrst) => <p>Rating: {svdrst.rating}</p>)
+      let reviews = this.props.details.dishes.map( (dish) => {
+        return ( <div>
+          <ul>
+            <li>Dish: {dish.name}</li>
+            <li>Price: {dish.price}</li>
+            <li>Description: {dish.description}</li>
+          </ul>
+        </div>
+        )
+      })
       return (
         <div>
           <p>Price Level: {this.props.details.price_level}</p>
           <p>Rating: {this.props.details.rating}</p>
+          <h3>Reviews</h3>
+          {reviews}
         </div>
       )
     }
@@ -124,7 +137,7 @@ class RestaurantCard extends React.Component{
           <span className="card-title activator grey-text text-darken-4">{this.props.details.name}<i className="material-icons right">more_vert</i>
           </span>
           <i className="small material-icons" onClick={this.handleClick}>add_circle</i>
-          <i className="small material-icons" onClick={this.handleRemove}>remove_circle</i>
+           <i className="small material-icons" onClick={this.handleRemove}>remove_circle</i>
         </div>
       </Card>
     )
