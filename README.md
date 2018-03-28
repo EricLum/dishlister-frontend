@@ -22,7 +22,7 @@ rails s -p 3001
 
 ### API Keys from Google Maps and Google Places APIs
  
-1. You'll need to register API keys from the Google Places API and Google Maps APIs.
+1. You'll need to register API keys from the Google Places API and Google Maps APIs
 2. Create a [dotenv](https://www.npmjs.com/package/dotenv) file to hide your api keys
 3. After placing your API keys in the dotenv file, you should be able to open the application
 4. Install npm dependencies and start the project
@@ -36,7 +36,8 @@ npm start
  2. Enter a location for the application to find a restaurant of
  3. Click on a restaurant
  4. Notice the restaurant has restaurant information on it from the Google Places API
- 5. [Demo Video](https://youtu.be/tmZ79EIZ6QQ)
+ 5. You can bookmark restaurants and add reviews on certain dishes
+ 6. [Demo Video](https://youtu.be/tmZ79EIZ6QQ)
  
  ## Tech and Framework info
  This project is built with React.JS and Ruby on Rails 5 API & PostgresSQL
