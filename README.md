@@ -39,6 +39,11 @@ npm start
  5. You can bookmark restaurants and add reviews on certain dishes
  6. [Demo Video](https://youtu.be/tmZ79EIZ6QQ)
  
+ ## Demo Video
+  <a href="http://www.youtube.com/watch?feature=player_embedded&v=tmZ79EIZ6QQ
+" target="_blank"><img src="http://img.youtube.com/vi/tmZ79EIZ6QQ/0.jpg" 
+alt="Dishlister Demo" width="240" height="180" border="10" /></a>
+ 
  ## Tech and Framework info
  This project is built with React.JS and Ruby on Rails 5 API & PostgresSQL
  
